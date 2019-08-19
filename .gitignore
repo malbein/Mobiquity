@@ -21,3 +21,35 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/.idea/codeStyles/codeStyleConfig.xml
+/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/.idea/misc.xml
+/.idea/Mobiquity.iml
+/.idea/modules.xml
+/.idea/sbt.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
+/.idea/.gitignore
+/target/test-classes/empty.txt
+/target/test-classes/example1.txt
+/target/test-classes/example2.txt
+/target/test-classes/example3.txt
+/target/test-classes/example4.txt
+/target/test-classes/four-four.txt
+/target/test-classes/four-three.txt
+/target/test-classes/invalid.txt
+/target/test-classes/invalidCost.txt
+/target/test-classes/invalidIndex.txt
+/target/test-classes/multiple.txt
+/target/test-classes/onlyWeight.txt
+/target/test-classes/single.txt
+/target/test-classes/single-bigger.txt
+/target/test-classes/single-smaller.txt
+/target/test-classes/two-none.txt
+/target/test-classes/two-one1.txt
+/target/test-classes/two-one2.txt
+/target/test-classes/two-one3.txt
+/target/test-classes/two-two.txt
+/target/test-classes/wrongDataItem.txt
+/target/classes/META-INF/Mobiquity.kotlin_module

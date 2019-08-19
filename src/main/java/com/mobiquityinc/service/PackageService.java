@@ -18,7 +18,7 @@ public class PackageService {
             base.getCostIndex().clear();
             base.getCostIndex().addAll(current.getCostIndex());
         }
-        //Run logic in a recursive way
+        //Run logic in a recursive way so we can check all posibilities and the code is cleaner
         if(!items.isEmpty()){
             for (int i = 0; i < items.size(); i++) {
                 Item item = items.get(i);

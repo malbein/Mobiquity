@@ -7,10 +7,13 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * This tests are to validate that the file exist and has been read correctly
+ */
 public class PackageFileReaderTest {
 
     @Test
-    public void wrongURL(){
+    public void fileNotFound(){
         try{
             PackageFileReaderService.read("wrongpath");
             Assert.fail();
@@ -97,4 +100,53 @@ public class PackageFileReaderTest {
         Assert.assertEquals(9, result.get(2).getItemList().size(), 0);
     }
 
+    @Test
+    public void wrongDataItem2() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/wrongDataItem2.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid values", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void wrongDataItem3() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/wrongDataItem3.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid cost values", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void wrongDataItem4() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/wrongDataItem4.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid cost values", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void wrongDataItem5() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/wrongDataItem5.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid max weight", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void emptyLine() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/empty-line.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid values", ae.getMessage());
+        }
+    }
 }

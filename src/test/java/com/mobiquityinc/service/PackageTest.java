@@ -7,6 +7,9 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * This tests are to validate logic, and use PackageFileReaderTest logic to get info from the files
+ */
 public class PackageTest {
 
     @Test

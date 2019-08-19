@@ -1,5 +1,7 @@
 package com.mobiquityinc.domain;
 
+import com.mobiquityinc.service.PackageService;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,38 +49,44 @@ public class Package {
             }
             return i;
         });
-        for (int i = 0; i < itemList.size(); i++) {
-            Item item = itemList.get(i);
-            Set<Integer> currentIndex = new HashSet<>();
-            Float currentCost = 0f;
-            Float availableWeight = maxWeight;
-            if(item.getWeight()>maxWeight)
-                continue;
-            currentIndex.add(item.getIndex());
-            currentCost += item.getCost();
-            availableWeight -= item.getWeight();
+        Response response = new Response();
+        PackageService.fillPackage(new Response(), maxWeight, itemList, response);
 
-            if(currentCost > maxCost){
-                maxCost = currentCost;
-                maxCostIndex = currentIndex;
-            }
-            int j = i+1;
-            while (j < itemList.size()){
-                for (int k = j; k < itemList.size(); k++) {
-                    Item item1 = itemList.get(k);
-                    if(item1.getWeight()>availableWeight)
-                        continue;
-                    currentIndex.add(item1.getIndex());
-                    currentCost += item1.getCost();
-                    availableWeight -= item1.getWeight();
-                }
-                if(currentCost > maxCost){
-                    maxCost = currentCost;
-                    maxCostIndex = currentIndex;
-                }
-                j++;
-            }
-        }
+        maxCostIndex = response.getCostIndex();
+        maxCost = response.getCost();
+
+//        for (int i = 0; i < itemList.size(); i++) {
+//            Item item = itemList.get(i);
+//            Set<Integer> currentIndex = new HashSet<>();
+//            Float currentCost = 0f;
+//            Float availableWeight = maxWeight;
+//            if(item.getWeight()>maxWeight)
+//                continue;
+//            currentIndex.add(item.getIndex());
+//            currentCost += item.getCost();
+//            availableWeight -= item.getWeight();
+//
+//            if(currentCost > maxCost){
+//                maxCost = currentCost;
+//                maxCostIndex = currentIndex;
+//            }
+//            int j = i+1;
+//            while (j < itemList.size()){
+//                for (int k = j; k < itemList.size(); k++) {
+//                    Item item1 = itemList.get(k);
+//                    if(item1.getWeight()>availableWeight)
+//                        continue;
+//                    currentIndex.add(item1.getIndex());
+//                    currentCost += item1.getCost();
+//                    availableWeight -= item1.getWeight();
+//                }
+//                if(currentCost > maxCost){
+//                    maxCost = currentCost;
+//                    maxCostIndex = currentIndex;
+//                }
+//                j++;
+//            }
+//        }
     }
 
     public Set<Integer> getMaxCostIndex(){

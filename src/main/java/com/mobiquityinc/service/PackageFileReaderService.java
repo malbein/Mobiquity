@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Object to convert the file information into a object structure
+ */
 public class PackageFileReaderService {
 
     public static List<Package> read(String filePath) throws APIException {
@@ -28,11 +31,11 @@ public class PackageFileReaderService {
                 result.add(createPackage(scanner.nextLine()));
             }
         }catch (FileNotFoundException e){
-            throw new APIException("File not found");
+            throw new APIException("File not found", e);
         }catch (APIException ae){
             throw ae;
         }catch (Exception e){
-            throw new APIException("Invalid values");
+            throw new APIException("Invalid values", e);
         }
 
         return result;
@@ -63,12 +66,16 @@ public class PackageFileReaderService {
         if(values.length != 3){
             throw new APIException("Invalid File - item values");
         }
+
         Integer index = Integer.valueOf(values[0]);
+
         Float weight = Float.valueOf(values[1]);
+
         String costString = values[2];
         if(!costString.startsWith("€")){
             throw new APIException("Invalid cost values");
         }
+
         Float cost = Float.valueOf(costString.substring(1,values[2].length()));
         if(weight <= 0 || cost <= 0){
             throw new APIException("Invalid values");

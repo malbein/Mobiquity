@@ -3,6 +3,9 @@ package com.mobiquityinc.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * This is a object used to handle the information we need of the packages to be return
+ */
 public class Response {
     private Set<Integer> costIndex = new HashSet<>();
     private Float cost = 0f;

@@ -1,5 +1,8 @@
 package com.mobiquityinc.domain;
 
+/**
+ * This represents a item you add in the package
+ */
 public class Item {
 
     private Integer index;

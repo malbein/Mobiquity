@@ -5,6 +5,9 @@ import com.mobiquityinc.domain.Response;
 
 import java.util.List;
 
+/**
+ * Service to fill the package with the items
+ */
 public class PackageService {
 
     public static void fillPackage(Response current, Float maxWeight, List<Item> items, Response base){
@@ -19,9 +22,7 @@ public class PackageService {
         if(!items.isEmpty()){
             for (int i = 0; i < items.size(); i++) {
                 Item item = items.get(i);
-                if(item.getWeight() > maxWeight){
-                    continue;
-                }else{
+                if(item.getWeight() <= maxWeight){
                     current.getCostIndex().add(item.getIndex());
                     current.setCost(current.getCost() + item.getCost());
                     current.setWeight(current.getWeight() + item.getWeight());

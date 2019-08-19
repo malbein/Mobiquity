@@ -24,6 +24,11 @@ public class Packer {
     return printResult(packageList);
   }
 
+  /**
+   * This methods call the calculation package per package
+   * @param packageList
+   * @return
+   */
   private static List<Package> calculateMaxCost(List<Package> packageList){
     packageList.forEach(aPackage -> {
       aPackage.calculateMaxCost();
@@ -31,6 +36,11 @@ public class Packer {
     return packageList;
   }
 
+  /**
+   * This creates the string result
+   * @param packageList with the information
+   * @return
+   */
   private static String printResult(List<Package> packageList){
     StringBuffer buffer = new StringBuffer();
     packageList.forEach(aPackage -> {

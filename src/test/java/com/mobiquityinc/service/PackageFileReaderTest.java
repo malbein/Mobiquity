@@ -71,6 +71,14 @@ public class PackageFileReaderTest {
     }
 
     @Test
+    public void simpleLargeCase() throws APIException {
+        List<Package> result = PackageFileReaderService.read("src/test/resources/single-large.txt");
+        Assert.assertEquals(1, result.size());
+        Assert.assertEquals(81, result.get(0).getMaxWeight(), 0);
+        Assert.assertEquals(15, result.get(0).getItemList().size(), 0);
+    }
+
+    @Test
     public void invalidCost() throws APIException {
         try{
             PackageFileReaderService.read("src/test/resources/invalidCost.txt");
@@ -149,4 +157,35 @@ public class PackageFileReaderTest {
             Assert.assertEquals("Invalid values", ae.getMessage());
         }
     }
+
+    @Test
+    public void cost101() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/cost101.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid values", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void maxWeight101() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/max-weight101.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid max weight", ae.getMessage());
+        }
+    }
+
+    @Test
+    public void weight101() throws APIException {
+        try{
+            PackageFileReaderService.read("src/test/resources/weight101.txt");
+            Assert.fail();
+        }catch (APIException ae){
+            Assert.assertEquals("Invalid values", ae.getMessage());
+        }
+    }
+
 }

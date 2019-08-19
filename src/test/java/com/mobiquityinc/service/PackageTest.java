@@ -13,6 +13,18 @@ import java.util.List;
 public class PackageTest {
 
     @Test
+    public void singleLarge() throws APIException {
+        List<Package> result = PackageFileReaderService.read("src/test/resources/single-large.txt");
+        result.forEach(aPackage -> {
+            aPackage.calculateMaxCost();
+        });
+        Assert.assertEquals(1,result.size(),0);
+        Package aPackage = result.get(0);
+        Assert.assertEquals(1, aPackage.getMaxCostIndex().size());
+        Assert.assertTrue(aPackage.getMaxCostIndex().contains(4));
+    }
+
+    @Test
     public void oneValueBigger() throws APIException {
         List<Package> result = PackageFileReaderService.read("src/test/resources/single-bigger.txt");
         result.forEach(aPackage -> {
